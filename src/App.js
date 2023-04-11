@@ -1,54 +1,45 @@
-import React,{useState} from 'react';
-import './App.css';
+
+import React, { useState } from 'react';
+import './App.css'
 
 function App() {
- 
-    const [logs, setLogs] = useState([]);
+  const [ArrIndex, setArrIndex] = useState(0);
+  const [ImgArr, setImgArr] = useState([
+    "congratulations",
+    "Happy Birthday",
+    "Good Morning",
+    "Good Afternoon",
+    "Good Evening",
+    "Good Night",
 
-    function handleMouseOver() {
-      const time = new Date().toLocaleString();
-      const event = { time, eventName:  "in" };
-      setLogs((prevLogs) => [...prevLogs, event]);
+  ]);
+
+  const handleChange = () => {
+    const len = ImgArr.length - 1;
+    if (ArrIndex === len) {
+      setArrIndex(ArrIndex - len);
+    } else {
+      setArrIndex(ArrIndex + 1);
     }
-  
-    function handleMouseOut() {
-      const time = new Date().toLocaleString();
-      const event = { time, eventName:  "out" };
-      setLogs((prevLogs) => [...prevLogs, event]);
-    }
-  
-    return (
-      <div className="container">
-        <div className="sub-container" >
-          <div className="header">
-        <h1 onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-          Mouse Moment
-        </h1>
-        <h2>.......</h2>
-       </div>
-        <div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th> Date & Time</th>
-                <th>Event Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-              logs.map((log, index) => (
-                <tr key={index}>
-                  <td>{log.time}</td>
-                  <td>{log.eventName}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-        </div>
+  };
+
+  return (
+    <div className="container">
+    <div className='sub-coontainer'>
+    <div className='head'>
+    <h1>{ImgArr[ArrIndex]}</h1>
+    </div>
+      
+      <div className='btn'>
+        <button onClick={handleChange} className="btn">
+          Change Greeting
+        </button>
       </div>
-    );
- 
+    </div>
+    </div>
+  );
 }
+
+
 
 export default App;
