@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background-color: rgb(181, 212, 224);
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    text-align: center;
+    margin: 7rem;
+    margin-left: 390px;
+    padding: 4px;
+
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tbody {
+    background-color: #fff;
+}
+
+.body {
+    background-color: rgb(78, 81, 230);
+}

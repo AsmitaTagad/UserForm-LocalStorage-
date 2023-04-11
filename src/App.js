@@ -1,41 +1,58 @@
 
-import React, { useState } from 'react';
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import Style from './App.module.css';
+import axios from 'axios';
+
+
+let url = "https://jsonplaceholder.typicode.com/users";
 
 function App() {
-  const [ArrIndex, setArrIndex] = useState(0);
-  const [ImgArr, setImgArr] = useState([
-    "congratulations",
-    "Happy Birthday",
-    "Good Morning",
-    "Good Afternoon",
-    "Good Evening",
-    "Good Night",
+  const [data, setData] = useState([]);
 
-  ]);
 
-  const handleChange = () => {
-    const len = ImgArr.length - 1;
-    if (ArrIndex === len) {
-      setArrIndex(ArrIndex - len);
-    } else {
-      setArrIndex(ArrIndex + 1);
-    }
+  const removeUser = (index) => {
+    data.splice(index, 1);
+    setData([...data]);
   };
 
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
   return (
-    <div className="container">
-    <div className='sub-coontainer'>
-    <div className='head'>
-    <h1>{ImgArr[ArrIndex]}</h1>
-    </div>
-      
-      <div className='btn'>
-        <button onClick={handleChange} className="btn">
-          Change Greeting
-        </button>
-      </div>
-    </div>
+    <div className={Style.Wrapper}>
+      <table classname={Style.container}>
+        <thead className={Style.body}>
+          <tr>
+            <td>Id</td>
+            <td>UserName</td>
+            <td>Email</td>
+            <td>Action</td>
+
+          </tr>
+        </thead>
+        <tbody className={Style.Subcontainer}>
+          {
+            data.length > 0 &&
+            data.map((items, index) => {
+              return (
+                <tr key={items.id}>
+                  <td>{items.id}</td>
+                  <td>{items.username}</td>
+                  <td>{items.email}</td>
+                  <td onClick={() => removeUser(index)} className="actions">
+                    ❌
+                  </td>
+
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
+
     </div>
   );
 }
