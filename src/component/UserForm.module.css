@@ -1,0 +1,44 @@
+.container {
+    margin: 43px;
+}
+
+.Wrapper {
+    display: flex;
+    margin-top: 5rem;
+}
+
+.form {
+    justify-content: center;
+    border: 2px solid;
+    padding: 20px;
+    margin-left: 3rem;
+    width: 16rem;
+    height: 16rem;
+    background-color: rgb(218, 151, 28);
+}
+
+
+.form label {
+    padding: 5px;
+    margin-top: 9px;
+
+}
+
+.inputFiled {
+    height: 1rem;
+    width: 15rem;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.form h3 {
+    text-align: center;
+    margin-left: 12px;
+}
+
+.btn {
+    margin: 1rem;
+    margin-left: 6rem;
+    width: 5rem;
+    border-radius: 3px solid;
+}
